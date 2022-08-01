@@ -23,8 +23,12 @@ for (index, row) in student_data_frame.iterrows():
 df = pd.read_csv('nato_phonetic_alphabet.csv')
 letters = {row.letter: row.code for index, row in df.iterrows()}
 
-word = input("Enter a word: ")
-word_letters = [l for l in word]
+while True:
+    word = input("Enter a word: ")
+    word_letters = [l for l in word]
 
-print([letters[letter.upper()] for letter in word_letters])
-
+    try:
+        print([letters[letter.upper()] for letter in word_letters])
+        break
+    except KeyError:
+        print("Sorry, only letters in the alphabet please.")
